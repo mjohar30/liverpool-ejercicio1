@@ -1,12 +1,14 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const port = process.env.PORT || 3002
 const item = require('./usecases/item')
 
 require('dotenv').config()
 app.use(express.json())
+app.use(cors())
 //Rutas
 app.post('/items', async (req,res) => {
     try{
