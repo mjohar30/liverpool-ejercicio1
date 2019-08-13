@@ -52,6 +52,26 @@ app.get('/items', async (req,res) => {
     }
 })
 
+app.delete('/items/:id/borrar', async(req,res) => {
+    try{
+        const {id} = req.params
+        const deleteItem = await item.deleteById(id)
+        res.json({
+            success:true,
+            message: 'Item deleted',
+            data: {
+                item: deleteItem
+            }
+        })
+    } catch(error){
+        res.status(400)
+        res.json({
+            success: false,
+            error: error.message
+        })
+    }
+})
+
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: true }, (err) => {
     if(err) return err
     console.log("Conectado a MongoDB")
