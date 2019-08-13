@@ -12,7 +12,7 @@ app.post('/items', async (req,res) => {
     try{
         const {name, price, images} = req.body
 
-        const createdItem = await  item.create({name, price, items})
+        const createdItem = await item.create({name, price, images})
 
         res.json({
             succes: true,
@@ -30,13 +30,31 @@ app.post('/items', async (req,res) => {
     }
 })
 
+app.get('/items', async (req,res) => {
+    try{
+        const allItems = await item.getAll()
+        res.json({
+            success: true,
+            message: 'All items',
+            data: {
+                items: allItems
+            }
+        })
 
+    } catch(error){
+        res.status(400)
+        res.json({
+            success: false,
+            error: error.message
+        })
+    }
+})
 
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: true }, (err) => {
     if(err) return err
     console.log("Conectado a MongoDB")
+    app.listen(port, () => {
+        console.log(`Servidor corriendo en el puerto ${port}`)
+    })
   })
 
-app.listen(port, () => {
-    console.log(`Servidor corriendo en el puerto ${port}`)
-  })

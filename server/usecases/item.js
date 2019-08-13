@@ -11,3 +11,9 @@ function getAll(){
 function deleteById(id){
     return Item.deleteOne({_id: id})
 }
+
+module.exports = {
+    create,
+    getAll,
+    deleteById
+}
