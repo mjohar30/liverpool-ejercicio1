@@ -1,0 +1,6 @@
+.Main{
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-end;
+  background-color: #F2F2F2
+}

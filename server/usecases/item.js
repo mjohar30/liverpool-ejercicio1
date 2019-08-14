@@ -8,12 +8,18 @@ function getAll(){
     return Item.find({}).lean()
 }
 
-function deleteById(id){
-    return Item.deleteOne({_id: id})
+function deleteById({id}){
+    return Item.findByIdAndDelete({_id: id})
+}
+
+function updateById({id, name, price}){
+    Item.findById({_id: id})
+    return Item.update({name, price})
 }
 
 module.exports = {
     create,
     getAll,
+    updateById,
     deleteById
 }

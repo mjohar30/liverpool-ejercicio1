@@ -5,11 +5,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f2f2f2
 }
 
 .navbar {
   background-color: #E10098;
+  font-size: 20px;
+  color: white
 }
+
+.link {
+  color: #FFF;
+}
+.link:hover {
+   color: black
+}
+
+
 
 .navbar-list{
   justify-content: center;
