@@ -2,9 +2,6 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
-const multer = require("multer");
-const cloudinary = require("cloudinary");
-const cloudinaryStorage = require("multer-storage-cloudinary");
 
 const port = process.env.PORT || 3002
 const item = require('./usecases/item')
@@ -14,26 +11,12 @@ require('dotenv').config()
 app.use(express.json())
 app.use(cors())
 
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
-    });
-const storage = cloudinaryStorage({
-    cloudinary: cloudinary,
-    folder: "demo",
-    allowedFormats: ["jpg", "png"],
-    transformation: [{ width: 500, height: 500, crop: "limit" }]
-    });
-
-const parser = multer({ storage: storage });
 //Rutas
 app.post('/items', async (req,res) => {
     try{
         // const images = {}
         // images.url = req.file.url
         // images.id = req.file.public_id
-
 
         const {name, price, images} = req.body
 
