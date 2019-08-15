@@ -20,6 +20,8 @@ Para levantar el servidor necesitas ejecutar el comando
 
 ### ` npm run nodemon `
 
+Esto para que si se hace algún cambio, el servidor se reinice automáticamente.
+
 ## Available scripts - client
 
 Dentro de la carpeta cliente utilizar el siguiente comando para el server:
